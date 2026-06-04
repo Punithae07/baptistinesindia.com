@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Congregation of the Sisters of St. John the Baptist | Indian Province</title>
+  <meta name="description" content="Responsive redesign for The Congregation of the Sisters of St. John the Baptist, Indian Province." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#1f2f55',
+            royal: '#3156a3',
+            gold: '#f6c445',
+            green: '#178b46',
+            orange: '#ff6b22',
+            cream: '#fff8e6'
+          },
+          fontFamily: {
+            serif: ['Georgia', 'Times New Roman', 'serif'],
+            sans: ['Inter', 'Segoe UI', 'Arial', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 18px 60px rgba(31, 47, 85, 0.14)',
+            glow: '0 20px 80px rgba(246, 196, 69, 0.25)'
+          },
+          animation: {
+            float: 'float 6s ease-in-out infinite',
+            pulseSoft: 'pulseSoft 3s ease-in-out infinite',
+            marquee: 'marquee 22s linear infinite'
+          },
+          keyframes: {
+            float: {
+              '0%,100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-14px)' }
+            },
+            pulseSoft: {
+              '0%,100%': { opacity: '0.55', transform: 'scale(1)' },
+              '50%': { opacity: '1', transform: 'scale(1.08)' }
+            },
+            marquee: {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-50%)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; }
+
+    .section-title span { color: #ff6b22; }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+    }
+
+    .hero-slide {
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 900ms ease, transform 1400ms ease;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 800ms ease, transform 800ms ease;
+    }
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .dropdown {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(14px);
+      transition: all 220ms ease;
+    }
+    .group:hover .dropdown,
+    .group:focus-within .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .pattern-bg {
+      background-image:
+        radial-gradient(circle at 12% 18%, rgba(246, 196, 69, 0.18), transparent 28%),
+        radial-gradient(circle at 88% 25%, rgba(49, 86, 163, 0.12), transparent 30%),
+        linear-gradient(135deg, #fffdf8 0%, #f7fbff 60%, #fff8e6 100%);
+    }
+
+    .gold-banner {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.9), transparent 14%),
+        radial-gradient(circle at 82% 16%, rgba(255,255,255,0.9), transparent 16%),
+        linear-gradient(135deg, #fff9c8 0%, #f8ce49 45%, #fff7b1 100%);
+    }
+
+    .mobile-submenu { max-height: 0; overflow: hidden; transition: max-height 260ms ease; }
+    .mobile-submenu.open { max-height: 520px; }
+
+    .community-track, .sister-track { transition: transform 500ms ease; }
+  </style>
+</head>
+
+<body class="bg-white text-slate-700 font-sans">
+  <!-- Top Bar -->
+  <div class="bg-navy text-white text-xs md:text-sm">
+    <div class="mx-auto max-w-7xl px-4 py-2 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-1">
+        <a href="tel:08025283437" class="hover:text-gold transition"><i class="fa-solid fa-phone mr-2"></i>080-25283437</a>
+        <p class="hidden sm:block"><i class="fa-solid fa-location-dot mr-2"></i>Sisters of St. John the Baptist, Old Madras Road, Indira Nagar, Bangalore</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline text-white/80">Select Language</span>
+        <select class="rounded border-0 bg-white px-2 py-1 text-navy outline-none">
+          <option>English</option>
+          <option>Hindi</option>
+          <option>Kannada</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brand Banner -->
+  <header class="gold-banner relative overflow-hidden">
+    <div class="absolute inset-0 opacity-40 pointer-events-none">
+      <div class="absolute left-10 top-8 h-2 w-2 rounded-full bg-white animate-pulseSoft"></div>
+      <div class="absolute left-1/3 top-4 h-1.5 w-1.5 rounded-full bg-white animate-pulseSoft"></div>
+      <div class="absolute right-1/4 bottom-5 h-2 w-2 rounded-full bg-white animate-pulseSoft"></div>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-4 py-5 md:py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center">
+      <img src="assets/logo.png" alt="Congregation logo" class="h-20 w-20 rounded-full object-contain bg-white/80 p-2 shadow-md" />
+      <div>
+        <h1 class="font-serif text-2xl md:text-4xl lg:text-5xl font-bold tracking-wide text-navy uppercase drop-shadow-sm">
+          The Congregation of the Sisters of St. John the Baptist
+        </h1>
+        <p class="mt-2 font-serif text-xl md:text-3xl text-orange tracking-[0.2em] uppercase">Indian Province</p>
+      </div>
+      <img src="assets/founder.png" alt="Founder portrait" class="h-20 w-20 rounded-full object-cover ring-4 ring-white/80 shadow-lg" />
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav id="mainNav" class="sticky top-0 z-50 bg-green shadow-md transition-all">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="flex min-h-[54px] items-center justify-between lg:justify-center">
+        <a href="#home" class="lg:hidden text-white font-bold uppercase tracking-wide">Baptistines India</a>
+        <button id="menuBtn" class="lg:hidden text-white text-2xl" aria-label="Open menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Desktop menu -->
+        <ul class="hidden lg:flex items-center text-white text-[13px] font-bold uppercase">
+          <li><a class="block px-4 py-5 hover:bg-white/15 transition" href="#home">Home</a></li>
+
+          <li class="group relative">
+            <a class="block px-4 py-5 hover:bg-white/15 transition" href="#identity">About <i class="fa-solid fa-angle-down ml-1"></i></a>
+            <ul class="dropdown absolute left-0 top-full w-64 rounded-b-xl bg-white text-slate-700 shadow-soft overflow-hidden normal-case text-sm font-semibold">
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#identity">Our Identity</a></li>
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#history">Our History & Mission</a></li>
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#organization">Organization</a></li>
+            </ul>
+          </li>
+
+          <li class="group relative">
+            <a class="block px-4 py-5 hover:bg-white/15 transition" href="#founder">Founder <i class="fa-solid fa-angle-down ml-1"></i></a>
+            <ul class="dropdown absolute left-0 top-full w-72 rounded-b-xl bg-white text-slate-700 shadow-soft overflow-hidden normal-case text-sm font-semibold">
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#founder">Alfonso Maria Fusco</a></li>
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#founder">Biography</a></li>
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#founder">Beatification</a></li>
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#founder">Canonization</a></li>
+            </ul>
+          </li>
+
+          <li class="group relative">
+            <a class="block px-4 py-5 hover:bg-white/15 transition" href="#province">Indian Province <i class="fa-solid fa-angle-down ml-1"></i></a>
+            <ul class="dropdown absolute left-0 top-full w-72 rounded-b-xl bg-white text-slate-700 shadow-soft overflow-hidden normal-case text-sm font-semibold">
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#province">Organization</a></li>
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#province">Administration</a></li>
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#communities">Houses in India</a></li>
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#communities">Houses Abroad</a></li>
+            </ul>
+          </li>
+
+          <li class="group relative">
+            <a class="block px-4 py-5 hover:bg-white/15 transition" href="#formation">Formation <i class="fa-solid fa-angle-down ml-1"></i></a>
+            <ul class="dropdown absolute left-0 top-full w-64 rounded-b-xl bg-white text-slate-700 shadow-soft overflow-hidden normal-case text-sm font-semibold">
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#formation">Aspirancy & Postulancy</a></li>
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#formation">Novitiate</a></li>
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#formation">Juniorate</a></li>
+              <li><a class="block px-5 py-3 hover:bg-cream hover:text-orange" href="#formation">Ongoing Formation</a></li>
+            </ul>
+          </li>
+
+          <li><a class="block px-4 py-5 hover:bg-white/15 transition" href="#news">Latest News</a></li>
+          <li><a class="block px-4 py-5 hover:bg-white/15 transition" href="#church">St. Fusco Church in India</a></li>
+          <li><a class="block px-4 py-5 hover:bg-white/15 transition" href="#vocation">Vocation</a></li>
+          <li><a class="block px-4 py-5 hover:bg-white/15 transition" href="#contact">Locate Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="hidden lg:hidden border-t border-white/15 pb-4 text-white">
+        <a class="block py-3 font-semibold" href="#home">Home</a>
+        <button class="mobileDrop flex w-full items-center justify-between py-3 font-semibold" type="button">About <i class="fa-solid fa-angle-down"></i></button>
+        <div class="mobile-submenu pl-4 text-sm text-white/90">
+          <a class="block py-2" href="#identity">Our Identity</a>
+          <a class="block py-2" href="#history">Our History & Mission</a>
+          <a class="block py-2" href="#organization">Organization</a>
+        </div>
+        <button class="mobileDrop flex w-full items-center justify-between py-3 font-semibold" type="button">Founder <i class="fa-solid fa-angle-down"></i></button>
+        <div class="mobile-submenu pl-4 text-sm text-white/90">
+          <a class="block py-2" href="#founder">Alfonso Maria Fusco</a>
+          <a class="block py-2" href="#founder">Biography</a>
+          <a class="block py-2" href="#founder">Canonization</a>
+        </div>
+        <button class="mobileDrop flex w-full items-center justify-between py-3 font-semibold" type="button">Indian Province <i class="fa-solid fa-angle-down"></i></button>
+        <div class="mobile-submenu pl-4 text-sm text-white/90">
+          <a class="block py-2" href="#province">Organization</a>
+          <a class="block py-2" href="#province">Administration</a>
+          <a class="block py-2" href="#communities">Houses in India</a>
+        </div>
+        <a class="block py-3 font-semibold" href="#formation">Formation</a>
+        <a class="block py-3 font-semibold" href="#news">Latest News</a>
+        <a class="block py-3 font-semibold" href="#church">St. Fusco Church in India</a>
+        <a class="block py-3 font-semibold" href="#vocation">Vocation</a>
+        <a class="block py-3 font-semibold" href="#contact">Locate Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="home">
+    <!-- Hero Carousel -->
+    <section class="relative h-[540px] md:h-[650px] overflow-hidden bg-navy">
+      <div class="hero-slide active absolute inset-0">
+        <img src="assets/hero-1.jpg" alt="Sisters community gathering" class="h-full w-full object-cover" />
+      </div>
+      <div class="hero-slide absolute inset-0">
+        <img src="assets/hero-2.jpg" alt="Congregation celebration" class="h-full w-full object-cover" />
+      </div>
+      <div class="hero-slide absolute inset-0">
+        <img src="assets/hero-3.jpg" alt="Province mission" class="h-full w-full object-cover" />
+      </div>
+
+      <div class="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/45 to-black/20"></div>
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute left-[10%] top-[25%] h-2 w-2 rounded-full bg-gold animate-pulseSoft"></div>
+        <div class="absolute left-[70%] top-[35%] h-1.5 w-1.5 rounded-full bg-white animate-pulseSoft"></div>
+        <div class="absolute left-[55%] bottom-[20%] h-2 w-2 rounded-full bg-green animate-pulseSoft"></div>
+      </div>
+
+      <div class="relative z-10 mx-auto max-w-7xl px-4 h-full flex items-center">
+        <div class="max-w-2xl text-white reveal show">
+          <p class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur">
+            <i class="fa-solid fa-cross mr-2 text-gold"></i> Prayer · Mission · Education · Service
+          </p>
+          <h2 class="mt-6 font-serif text-4xl md:text-6xl font-bold leading-tight">
+            Serving God through Compassion, Education and Mission
+          </h2>
+          <p class="mt-5 text-lg text-white/85 leading-relaxed">
+            A renewed digital home for the Indian Province of the Sisters of St. John the Baptist.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="#province" class="rounded-full bg-gold px-7 py-3 text-navy font-bold shadow-glow hover:-translate-y-1 transition">Explore Our Province</a>
+            <a href="#news" class="rounded-full border border-white/40 px-7 py-3 text-white font-bold hover:bg-white hover:text-navy transition">Read Latest News</a>
+          </div>
+        </div>
+      </div>
+
+      <button id="prevHero" class="absolute left-4 top-1/2 z-20 -translate-y-1/2 h-11 w-11 rounded-full bg-white/20 text-white backdrop-blur hover:bg-white hover:text-navy transition" aria-label="Previous slide">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button id="nextHero" class="absolute right-4 top-1/2 z-20 -translate-y-1/2 h-11 w-11 rounded-full bg-white/20 text-white backdrop-blur hover:bg-white hover:text-navy transition" aria-label="Next slide">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div id="heroDots" class="absolute bottom-7 left-1/2 z-20 flex -translate-x-1/2 gap-2"></div>
+    </section>
+
+    <!-- Welcome / Identity -->
+    <section id="identity" class="pattern-bg py-20">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="reveal">
+            <p class="text-orange font-bold uppercase tracking-[0.2em]">Our Identity</p>
+            <h2 class="section-title mt-3 font-serif text-4xl md:text-5xl text-navy font-bold">A life rooted in <span>faith</span> and service</h2>
+            <p class="mt-5 text-lg leading-8 text-slate-600">
+              The Sisters of St. John the Baptist continue the mission of love, education and pastoral service through communities, institutions and formation across the Indian Province.
+            </p>
+            <div class="mt-8 grid sm:grid-cols-2 gap-4">
+              <div class="glass rounded-2xl p-5 shadow-soft hover:-translate-y-1 transition">
+                <i class="fa-solid fa-hands-praying text-3xl text-orange"></i>
+                <h3 class="mt-3 font-bold text-navy">Prayer</h3>
+                <p class="mt-2 text-sm">Centered in spiritual life and community worship.</p>
+              </div>
+              <div class="glass rounded-2xl p-5 shadow-soft hover:-translate-y-1 transition">
+                <i class="fa-solid fa-book-open-reader text-3xl text-green"></i>
+                <h3 class="mt-3 font-bold text-navy">Education</h3>
+                <p class="mt-2 text-sm">Committed to value-based learning and formation.</p>
+              </div>
+              <div class="glass rounded-2xl p-5 shadow-soft hover:-translate-y-1 transition">
+                <i class="fa-solid fa-heart text-3xl text-royal"></i>
+                <h3 class="mt-3 font-bold text-navy">Service</h3>
+                <p class="mt-2 text-sm">Serving people with compassion and dignity.</p>
+              </div>
+              <div class="glass rounded-2xl p-5 shadow-soft hover:-translate-y-1 transition">
+                <i class="fa-solid fa-globe text-3xl text-gold"></i>
+                <h3 class="mt-3 font-bold text-navy">Mission</h3>
+                <p class="mt-2 text-sm">Sharing hope through apostolic works.</p>
+              </div>
+            </div>
+          </div>
+          <div class="reveal relative">
+            <div class="absolute -inset-4 rounded-[2rem] bg-gold/25 blur-2xl"></div>
+            <img src="assets/welcome.jpg" alt="Sisters in mission" class="relative rounded-[2rem] shadow-soft w-full object-cover min-h-[420px]" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Superior + Provincial -->
+    <section class="py-20 bg-white">
+      <div class="mx-auto max-w-7xl px-4 grid lg:grid-cols-2 gap-12">
+        <div class="reveal">
+          <h2 class="section-title font-serif text-3xl md:text-4xl text-navy font-bold">Superior <span>General</span></h2>
+          <div class="mt-8 rounded-3xl bg-slate-50 p-5 shadow-soft grid md:grid-cols-[180px_1fr] gap-6 items-center">
+            <img src="assets/superior-general.jpg" alt="Superior General" class="h-64 w-full md:w-44 rounded-2xl object-cover shadow-md" />
+            <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+              <div class="grid grid-cols-[130px_1fr] text-sm">
+                <div class="bg-orange p-4 text-white font-bold">Superior General</div><div class="bg-navy p-4 text-white font-bold">Sr. Lina Pantano</div>
+                <div class="bg-orange p-4 text-white font-bold">Address</div><div class="bg-slate-100 p-4">Casa Generalizia, Circonvallazione Cornelia 65, Roma, Italia</div>
+                <div class="bg-orange p-4 text-white font-bold">Telephone</div><div class="bg-slate-100 p-4">0039/3382809108</div>
+                <div class="bg-orange p-4 text-white font-bold">Email</div><div class="bg-slate-100 p-4">seg.genbattistine@ccsjb.org</div>
+                <div class="bg-orange p-4 text-white font-bold">Website</div><div class="bg-slate-100 p-4">www.suorebattistine.org</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <h2 class="section-title font-serif text-3xl md:text-4xl text-navy font-bold">Provincial's <span>Message</span></h2>
+          <div class="mt-8 rounded-3xl bg-cream p-6 shadow-soft">
+            <img src="assets/provincial.jpg" alt="Provincial Sister" class="h-64 w-full rounded-2xl object-cover shadow-md" />
+            <div class="mt-6">
+              <i class="fa-solid fa-quote-left text-4xl text-orange/30"></i>
+              <h3 class="mt-3 text-xl font-bold text-navy">Dear Sisters,</h3>
+              <p class="mt-3 leading-7 text-slate-600">
+                Spiritual journey is one of constant transformation. In order to grow, we must give up the struggle to remain the same and learn to embrace change at all times.
+              </p>
+              <a href="#" class="mt-5 inline-flex items-center font-bold text-orange hover:text-navy transition">Read More <i class="fa-solid fa-arrow-right ml-2"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Province -->
+    <section id="province" class="bg-slate-50 py-20">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="reveal">
+            <h2 class="section-title font-serif text-4xl md:text-5xl text-navy font-bold">Indian <span>Province</span></h2>
+            <p class="mt-5 text-lg leading-8 text-slate-600">
+              Our communities are spread across different regions, carrying forward the charism of the congregation through education, pastoral care and social mission.
+            </p>
+            <div class="mt-8 grid grid-cols-2 gap-4">
+              <div class="rounded-2xl bg-white p-5 shadow-soft"><span class="counter text-3xl font-black text-orange" data-target="27">0</span><p class="font-bold text-navy">Communities</p></div>
+              <div class="rounded-2xl bg-white p-5 shadow-soft"><span class="counter text-3xl font-black text-green" data-target="150">0</span><p class="font-bold text-navy">Sisters</p></div>
+              <div class="rounded-2xl bg-white p-5 shadow-soft"><span class="counter text-3xl font-black text-royal" data-target="18">0</span><p class="font-bold text-navy">Ministries</p></div>
+              <div class="rounded-2xl bg-white p-5 shadow-soft"><span class="counter text-3xl font-black text-gold" data-target="9">0</span><p class="font-bold text-navy">States</p></div>
+            </div>
+          </div>
+          <div class="reveal rounded-3xl bg-white p-5 shadow-soft">
+            <img src="assets/india-map.jpg" alt="Indian Province map" class="w-full rounded-2xl object-contain" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sisters Carousel -->
+    <section id="sisters" class="py-20 bg-white overflow-hidden">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="flex items-end justify-between gap-4 reveal">
+          <div>
+            <p class="text-orange font-bold uppercase tracking-[0.2em]">Province Family</p>
+            <h2 class="section-title mt-3 font-serif text-4xl text-navy font-bold">Sisters in the <span>Province</span></h2>
+          </div>
+          <div class="hidden sm:flex gap-2">
+            <button id="prevSister" class="h-11 w-11 rounded-full bg-slate-100 text-navy hover:bg-navy hover:text-white transition"><i class="fa-solid fa-chevron-left"></i></button>
+            <button id="nextSister" class="h-11 w-11 rounded-full bg-slate-100 text-navy hover:bg-navy hover:text-white transition"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+        <div class="mt-10 overflow-hidden reveal">
+          <div id="sisterTrack" class="sister-track flex gap-6">
+            <article class="sister-card min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] rounded-3xl bg-white border border-slate-100 p-4 shadow-soft">
+              <img src="assets/sister-1.jpg" alt="Sr. Arputha Mary" class="h-80 w-full rounded-2xl object-cover" />
+              <div class="p-4 text-center"><h3 class="font-bold text-navy">Sr. Arputha Mary</h3><p class="text-sm text-slate-500">Batch - XII</p></div>
+            </article>
+            <article class="sister-card min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] rounded-3xl bg-white border border-slate-100 p-4 shadow-soft">
+              <img src="assets/sister-2.jpg" alt="Sr. Maria Grace" class="h-80 w-full rounded-2xl object-cover" />
+              <div class="p-4 text-center"><h3 class="font-bold text-navy">Sr. Maria Grace</h3><p class="text-sm text-slate-500">Batch - XIII</p></div>
+            </article>
+            <article class="sister-card min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] rounded-3xl bg-white border border-slate-100 p-4 shadow-soft">
+              <img src="assets/sister-3.jpg" alt="Sr. Regina" class="h-80 w-full rounded-2xl object-cover" />
+              <div class="p-4 text-center"><h3 class="font-bold text-navy">Sr. Regina</h3><p class="text-sm text-slate-500">Batch - XIV</p></div>
+            </article>
+            <article class="sister-card min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] rounded-3xl bg-white border border-slate-100 p-4 shadow-soft">
+              <img src="assets/sister-4.jpg" alt="Sr. Angela" class="h-80 w-full rounded-2xl object-cover" />
+              <div class="p-4 text-center"><h3 class="font-bold text-navy">Sr. Angela</h3><p class="text-sm text-slate-500">Batch - XV</p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Communities -->
+    <section id="communities" class="bg-slate-50 py-20 overflow-hidden">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="reveal text-center max-w-3xl mx-auto">
+          <p class="text-orange font-bold uppercase tracking-[0.2em]">Our Mission Houses</p>
+          <h2 class="section-title mt-3 font-serif text-4xl text-navy font-bold">Communities in the <span>Province</span></h2>
+          <p class="mt-4 text-slate-600">A modern carousel-style presentation of province communities and mission houses.</p>
+        </div>
+
+        <div class="mt-12 grid md:grid-cols-3 gap-7 reveal">
+          <article class="group rounded-3xl bg-white p-4 shadow-soft overflow-hidden hover:-translate-y-2 transition">
+            <div class="overflow-hidden rounded-2xl"><img src="assets/community-1.jpg" alt="Community building" class="h-64 w-full object-cover group-hover:scale-110 transition duration-700" /></div>
+            <div class="p-4"><h3 class="font-bold text-navy text-xl">Bangalore Community</h3><p class="mt-2 text-sm text-slate-500">Old Madras Road, Bangalore</p><p class="mt-3 text-slate-600">A center of prayer, service and province administration.</p></div>
+          </article>
+          <article class="group rounded-3xl bg-white p-4 shadow-soft overflow-hidden hover:-translate-y-2 transition">
+            <div class="overflow-hidden rounded-2xl"><img src="assets/community-2.jpg" alt="Community building" class="h-64 w-full object-cover group-hover:scale-110 transition duration-700" /></div>
+            <div class="p-4"><h3 class="font-bold text-navy text-xl">Madurai Community</h3><p class="mt-2 text-sm text-slate-500">Tamil Nadu</p><p class="mt-3 text-slate-600">Serving through education and pastoral care.</p></div>
+          </article>
+          <article class="group rounded-3xl bg-white p-4 shadow-soft overflow-hidden hover:-translate-y-2 transition">
+            <div class="overflow-hidden rounded-2xl"><img src="assets/community-3.jpg" alt="Community building" class="h-64 w-full object-cover group-hover:scale-110 transition duration-700" /></div>
+            <div class="p-4"><h3 class="font-bold text-navy text-xl">Vellore Community</h3><p class="mt-2 text-sm text-slate-500">Tamil Nadu</p><p class="mt-3 text-slate-600">A mission house committed to community life and ministry.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest News -->
+    <section id="news" class="py-20 bg-white">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-5">
+          <div>
+            <p class="text-orange font-bold uppercase tracking-[0.2em]">Updates</p>
+            <h2 class="section-title mt-3 font-serif text-4xl text-navy font-bold">Latest <span>News</span></h2>
+          </div>
+          <a href="#" class="font-bold text-orange hover:text-navy">View all news <i class="fa-solid fa-arrow-right ml-2"></i></a>
+        </div>
+        <div class="mt-10 grid md:grid-cols-3 gap-7">
+          <article class="reveal rounded-3xl border border-slate-100 bg-white shadow-soft overflow-hidden hover:-translate-y-2 transition">
+            <div class="relative"><img src="assets/news-1.jpg" alt="News event" class="h-56 w-full object-cover" /><span class="absolute left-4 top-4 rounded-full bg-orange px-4 py-2 text-white text-sm font-bold">June 12</span></div>
+            <div class="p-6"><h3 class="text-xl font-bold text-navy">Province Celebration</h3><p class="mt-3 text-slate-600">A joyful gathering of sisters, students and community members.</p><a class="mt-4 inline-block font-bold text-orange" href="#">Read More</a></div>
+          </article>
+          <article class="reveal rounded-3xl border border-slate-100 bg-white shadow-soft overflow-hidden hover:-translate-y-2 transition">
+            <div class="relative"><img src="assets/news-2.jpg" alt="Formation event" class="h-56 w-full object-cover" /><span class="absolute left-4 top-4 rounded-full bg-green px-4 py-2 text-white text-sm font-bold">May 28</span></div>
+            <div class="p-6"><h3 class="text-xl font-bold text-navy">Formation Program</h3><p class="mt-3 text-slate-600">Young sisters continue their journey of faith and mission.</p><a class="mt-4 inline-block font-bold text-orange" href="#">Read More</a></div>
+          </article>
+          <article class="reveal rounded-3xl border border-slate-100 bg-white shadow-soft overflow-hidden hover:-translate-y-2 transition">
+            <div class="relative"><img src="assets/news-3.jpg" alt="Mission event" class="h-56 w-full object-cover" /><span class="absolute left-4 top-4 rounded-full bg-royal px-4 py-2 text-white text-sm font-bold">Apr 18</span></div>
+            <div class="p-6"><h3 class="text-xl font-bold text-navy">Mission Outreach</h3><p class="mt-3 text-slate-600">Community service initiatives carried out with compassion.</p><a class="mt-4 inline-block font-bold text-orange" href="#">Read More</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formation / Church / Vocation small blocks -->
+    <section id="formation" class="pattern-bg py-20">
+      <div class="mx-auto max-w-7xl px-4 grid md:grid-cols-3 gap-7">
+        <div class="reveal rounded-3xl bg-white p-8 shadow-soft"><i class="fa-solid fa-seedling text-4xl text-green"></i><h3 class="mt-5 text-2xl font-serif font-bold text-navy">Formation</h3><p class="mt-3 text-slate-600">A journey of discernment, prayer, community and apostolic mission.</p></div>
+        <div id="church" class="reveal rounded-3xl bg-white p-8 shadow-soft"><i class="fa-solid fa-church text-4xl text-orange"></i><h3 class="mt-5 text-2xl font-serif font-bold text-navy">St. Fusco Church</h3><p class="mt-3 text-slate-600">A sacred place inspired by the life and spirituality of St. Alfonso Maria Fusco.</p></div>
+        <div id="vocation" class="reveal rounded-3xl bg-white p-8 shadow-soft"><i class="fa-solid fa-dove text-4xl text-royal"></i><h3 class="mt-5 text-2xl font-serif font-bold text-navy">Vocation</h3><p class="mt-3 text-slate-600">Responding generously to God's call through Baptistine life and mission.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-[#090d13] text-white pt-16">
+    <div class="mx-auto max-w-7xl px-4 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div>
+        <h3 class="font-serif text-xl font-bold">Contact <span class="text-orange">Info</span></h3>
+        <div class="mt-6 space-y-3 text-sm text-white/75">
+          <p>Sisters of St. John the Baptist,<br>Old Madras Road, Indira Nagar,<br>Bangalore - 560 038, Karnataka, India</p>
+          <p><strong class="text-orange">Phone:</strong> 080-25283437</p>
+          <p><strong class="text-orange">Email:</strong> provinceindiascjb@gmail.com</p>
+        </div>
+        <div class="mt-5 flex gap-4 text-lg">
+          <a href="#" class="hover:text-gold"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="hover:text-gold"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="hover:text-gold"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" class="hover:text-gold"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-serif text-xl font-bold">Our Province <span class="text-orange">Links</span></h3>
+        <ul class="mt-6 space-y-3 text-sm text-white/75">
+          <li><a href="#" class="hover:text-gold"><i class="fa-solid fa-angle-right mr-2"></i>Fusco's Matric. High School Madurai</a></li>
+          <li><a href="#" class="hover:text-gold"><i class="fa-solid fa-angle-right mr-2"></i>Fusco's School Bangalore</a></li>
+          <li><a href="#" class="hover:text-gold"><i class="fa-solid fa-angle-right mr-2"></i>Don Bosco College Golaghat</a></li>
+          <li><a href="#" class="hover:text-gold"><i class="fa-solid fa-angle-right mr-2"></i>Province Communities</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-serif text-xl font-bold">Latest <span class="text-orange">Video</span></h3>
+        <div class="mt-6 overflow-hidden rounded-2xl bg-black shadow-soft aspect-video grid place-items-center relative">
+          <img src="assets/video-thumb.jpg" alt="Latest video" class="h-full w-full object-cover opacity-70" />
+          <button class="absolute h-14 w-14 rounded-full bg-gold text-navy shadow-glow"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <a href="#" class="mt-4 inline-block text-sm font-bold text-gold hover:text-white">Click here to view more videos</a>
+      </div>
+
+      <div>
+        <h3 class="font-serif text-xl font-bold">Reach <span class="text-orange">Us</span></h3>
+        <div class="mt-6 overflow-hidden rounded-2xl bg-white p-1 shadow-soft">
+          <iframe title="Location map" class="h-56 w-full rounded-xl" loading="lazy" src="https://www.google.com/maps?q=Sisters%20of%20St.%20John%20the%20Baptist%20Indira%20Nagar%20Bangalore&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 border-t border-white/10 py-6">
+      <div class="mx-auto max-w-7xl px-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/65">
+        <p>Copyright © 2026 Congregation of the Sisters of St. John the Baptist, Indian Province. All Rights Reserved.</p>
+        <p>Powered by <span class="text-orange font-bold">BoscoSoft</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backTop" class="fixed bottom-6 right-6 z-50 hidden h-12 w-12 rounded-full bg-green text-white shadow-soft hover:bg-orange transition" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.innerHTML = mobileMenu.classList.contains('hidden') ? '<i class="fa-solid fa-bars"></i>' : '<i class="fa-solid fa-xmark"></i>';
+    });
+
+    document.querySelectorAll('.mobileDrop').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const submenu = btn.nextElementSibling;
+        submenu.classList.toggle('open');
+        btn.querySelector('i').classList.toggle('rotate-180');
+      });
+    });
+
+    document.querySelectorAll('#mobileMenu a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+
+    // Hero carousel
+    const slides = Array.from(document.querySelectorAll('.hero-slide'));
+    const dotsWrap = document.getElementById('heroDots');
+    let currentSlide = 0;
+    let heroTimer;
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'h-2.5 w-2.5 rounded-full bg-white/50 transition-all';
+      dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+      dot.addEventListener('click', () => showSlide(index));
+      dotsWrap.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsWrap.children);
+
+    function showSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].className = 'h-2.5 w-2.5 rounded-full bg-white/50 transition-all';
+      currentSlide = (index + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].className = 'h-2.5 w-8 rounded-full bg-gold transition-all';
+      restartHero();
+    }
+
+    function restartHero() {
+      clearInterval(heroTimer);
+      heroTimer = setInterval(() => showSlide(currentSlide + 1), 5000);
+    }
+
+    document.getElementById('prevHero').addEventListener('click', () => showSlide(currentSlide - 1));
+    document.getElementById('nextHero').addEventListener('click', () => showSlide(currentSlide + 1));
+    showSlide(0);
+
+    // Sisters carousel
+    const sisterTrack = document.getElementById('sisterTrack');
+    const sisterCards = document.querySelectorAll('.sister-card');
+    let sisterIndex = 0;
+
+    function cardsPerView() {
+      if (window.innerWidth >= 1024) return 3;
+      if (window.innerWidth >= 640) return 2;
+      return 1;
+    }
+
+    function updateSisters() {
+      const maxIndex = Math.max(0, sisterCards.length - cardsPerView());
+      sisterIndex = Math.min(sisterIndex, maxIndex);
+      const cardWidth = sisterCards[0].getBoundingClientRect().width + 24;
+      sisterTrack.style.transform = `translateX(-${sisterIndex * cardWidth}px)`;
+    }
+
+    document.getElementById('nextSister').addEventListener('click', () => {
+      const maxIndex = Math.max(0, sisterCards.length - cardsPerView());
+      sisterIndex = sisterIndex >= maxIndex ? 0 : sisterIndex + 1;
+      updateSisters();
+    });
+    document.getElementById('prevSister').addEventListener('click', () => {
+      const maxIndex = Math.max(0, sisterCards.length - cardsPerView());
+      sisterIndex = sisterIndex <= 0 ? maxIndex : sisterIndex - 1;
+      updateSisters();
+    });
+    window.addEventListener('resize', updateSisters);
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+    // Counter animation
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = Number(el.dataset.target);
+        let value = 0;
+        const step = Math.max(1, Math.ceil(target / 45));
+        const timer = setInterval(() => {
+          value += step;
+          if (value >= target) {
+            el.textContent = target + '+';
+            clearInterval(timer);
+          } else {
+            el.textContent = value;
+          }
+        }, 25);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach((counter) => counterObserver.observe(counter));
+
+    // Back to top + nav shadow
+    const backTop = document.getElementById('backTop');
+    const mainNav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      backTop.classList.toggle('hidden', window.scrollY < 500);
+      mainNav.classList.toggle('shadow-xl', window.scrollY > 80);
+    });
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    updateSisters();
+  </script>
+</body>
+</html>
